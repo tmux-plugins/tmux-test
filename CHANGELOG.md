@@ -7,3 +7,4 @@
 - generic "run_tests" script
 - "run_tests_in_isolation" script
 - add "Vagrantfile"
+- enable passing VM names as arguments to "run_tests" script

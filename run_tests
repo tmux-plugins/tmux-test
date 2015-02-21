@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 
 # Invoke this script when running a test suite.
+# Examples invocation:
+#   ./run_tests                # runs tests on default VM ubuntu
+#   ./run_tests ubuntu         # runs tests on ubuntu VM
+#   ./run_tests ubuntu centos  # runs tests on ubuntu and cents VMs
 
 # For each virtual machine where tests run, this script performs the following:
 # - starts VM
 # - starts the test suite witin a VM
 # - stops the VM after the test suite is done
 
+export BOXES="$*"
+
 # global variable for script exit value
 export EXIT_VALUE=0
 
-register_failing_specs() {
+register_failing_tests() {
 	EXIT_VALUE=1
 }
 
@@ -56,14 +62,26 @@ run_tests_on_vm() {
 	local tests_exit_value="$?"
 	stop_vagrant "$vm"
 	if [ "$tests_exit_value" -gt 0 ]; then
-		register_failing_specs
+		register_failing_tests
+	fi
+}
+
+run_tests_on_virtual_machines() {
+	if [ -z "$BOXES" ]; then
+		# no script arguments, run on 'ubuntu' by default
+		run_tests_on_vm "ubuntu"
+	else
+		# run on VMs provided as script arguments
+		local box
+		for box in $BOXES; do
+			run_tests_on_vm "$box"
+		done
 	fi
 }
 
 main() {
-	run_tests_on_vm "ubuntu"
-	run_tests_on_vm "centos"
-
+	echo "$BOXES"
+	run_tests_on_virtual_machines
 	exit_message "$EXIT_VALUE"
 	exit "$EXIT_VALUE"
 }
