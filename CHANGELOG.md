@@ -6,3 +6,4 @@
 - add a ".travis.yml" file
 - generic "run_tests" script
 - "run_tests_in_isolation" script
+- add "Vagrantfile"
