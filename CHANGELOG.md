@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
-- add a ".travis.yml" file
-- add vagrant provisioning scripts for ubuntu and debian
 - git init
+- add vagrant provisioning scripts for ubuntu and debian
+- add a ".travis.yml" file
+- generic "run_tests" script
