@@ -6,12 +6,10 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-TESTS_DIR="$1"
-
 EXIT_VALUE=0 # running a test suite is successful by default
 
 test_files() {
-	ls -1 "$TESTS_DIR" |     # test files are in the current dir
+	ls -1 "$CURRENT_DIR" |   # test files are in the current dir
 		\grep -i "^test" |   # test file names start with "test"
 		xargs                # file names in a single line
 }
@@ -24,7 +22,7 @@ run_tests() {
 	local test_file
 	for test_file in $(test_files); do
 		echo "Running test: $test_file"
-		"${CURRENT_DIR}/${TESTS_DIR}${test_file}"
+		"${CURRENT_DIR}/${test_file}"
 
 		# handling exit value
 		local test_exit_value="$?"

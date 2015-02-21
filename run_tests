@@ -33,7 +33,7 @@ stop_vagrant() {
 
 run_tests() {
 	local box="$1"
-	local test_file="/vagrant/run_tests_in_isolation 'tests/'"
+	local test_file="/vagrant/tests/run_tests_in_isolation"
 	echo "Running test suite on $box from: $test_file"
 	echo
 	vagrant ssh "$box" -c "cd /vagrant; $test_file"
