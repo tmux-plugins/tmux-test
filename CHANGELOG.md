@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v0.0.1, 2015-02-21
 - git init
 - add vagrant provisioning scripts for ubuntu and debian
 - add a ".travis.yml" file
