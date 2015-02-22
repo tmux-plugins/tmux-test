@@ -2,12 +2,13 @@
 
 [![Build Status](https://travis-ci.org/tmux-plugins/tmux-test.png?branch=master)](https://travis-ci.org/tmux-plugins/tmux-test)
 
-A small framework for isolated testing of tmux plugins.
+A small framework for isolated testing of tmux plugins. Works on
+[travis](travis-ci.org) too.
 
 Extracted from [tmux plugin manager](https://github.com/tmux-plugins/tpm) and
 [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat).
 
-Dependencies: `Vagrant`.
+Dependencies: `Vagrant` (when running on travis, this is not required).
 
 ### Setup
 
