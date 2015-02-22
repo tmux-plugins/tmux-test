@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+main() {
+	lib/tmux-test/setup
+	./run_tests
+	exit_value=$?
+	lib/tmux-test/setup "undo"
+	exit "$exit_value"
+}
+main

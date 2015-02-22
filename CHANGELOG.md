@@ -10,6 +10,7 @@
 - `setup` script symlinks helpers file to `tests/` directory
 - `setup` script can undo most of its actions
 - add a tmux scripting test
+- `tmux-test` uses `tmux-test` to test itself
 
 ### v0.0.1, 2015-02-21
 - git init
