@@ -30,6 +30,7 @@ main() {
 	symlink_user_test_runner
 	create_directory_for_tests
 	symlink_internal_test_runner
+	copy_travis_yml
 }
 main
 
