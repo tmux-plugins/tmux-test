@@ -6,6 +6,7 @@
 - add installation and usage instructions
 - copy `.travis.yml` to the project root when running `setup` script
 - add a brief mention of travis CI to the readme
+- add test helpers
 
 ### v0.0.1, 2015-02-21
 - git init
