@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
 - move `tests/helpers.sh` to `tests/helpers/helpers.sh`
 
