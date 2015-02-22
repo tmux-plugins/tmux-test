@@ -68,10 +68,12 @@ Check out more example test scripts in this project's [tests/ directory](tests/)
 
 ### Notes
 
-Don't run `tests/run_tests_in_isolation` script on your local development
-environment. That's an internal test runner meant to be executed in an
-isolated environment like `vagrant` or `travis`.<br/>
-Use `./run_tests` script.
+- The `tests/` directory for tests and `lib/tmux-test/` for cloning `tmux-test`
+  into cannot be changed currently
+- Don't run `tests/run_tests_in_isolation` script on your local development
+  environment. That's an internal test runner meant to be executed in an
+  isolated environment like `vagrant` or `travis`.<br/>
+  Use `./run_tests` script.
 
 ### Other goodies
 
