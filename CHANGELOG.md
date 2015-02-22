@@ -5,6 +5,7 @@
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
 - move `tests/helpers.sh` to `tests/helpers/helpers.sh`
+- `setup` undo removes added lines from gitignore file
 
 ### v0.1.0, 2015-02-22
 - changes so that 'tmux-test' can be included with tmux plugins

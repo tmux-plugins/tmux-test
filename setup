@@ -21,11 +21,21 @@ gitignore() {
 	grep -q "^${file}$" .gitignore 2>/dev/null || echo "$file" >> .gitignore
 }
 
+remove_from_gitignore() {
+	local file="$1"
+	local escaped_filename="$(echo "$file" | sed "s,/,\/,g")"
+	sed -i "" "/^${escaped_filename}$/d" .gitignore
+}
+
 add_files_to_gitignore() {
 	if ! undo; then
 		gitignore "run_tests"
 		gitignore "tests/run_tests_in_isolation"
 		gitignore "tests/helpers/helpers.sh"
+	else
+		remove_from_gitignore "run_tests"
+		remove_from_gitignore "tests/run_tests_in_isolation"
+		remove_from_gitignore "tests/helpers/helpers.sh"
 	fi
 }
 
