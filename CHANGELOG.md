@@ -7,6 +7,7 @@
 - copy `.travis.yml` to the project root when running `setup` script
 - add a brief mention of travis CI to the readme
 - add test helpers
+- `setup` script symlinks helpers file to `tests/` directory
 
 ### v0.0.1, 2015-02-21
 - git init

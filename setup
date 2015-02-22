@@ -21,6 +21,10 @@ symlink_internal_test_runner() {
 	ln -sf ../lib/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
 }
 
+symlink_test_helpers() {
+	ln -sf ../lib/tmux-test/tests/helpers tests/helpers
+}
+
 copy_travis_yml() {
 	cp lib/tmux-test/.travis.yml .travis.yml
 }
@@ -30,6 +34,7 @@ main() {
 	symlink_user_test_runner
 	create_directory_for_tests
 	symlink_internal_test_runner
+	symlink_test_helpers
 	copy_travis_yml
 }
 main
