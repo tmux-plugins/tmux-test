@@ -48,7 +48,7 @@ symlink_internal_test_runner() {
 }
 
 symlink_test_helpers() {
-	local file="tests/helpers"
+	local file="tests/helpers.sh"
 	if ! undo; then
 		ln -sf "../lib/tmux-test/${file}" "$file"
 	else
