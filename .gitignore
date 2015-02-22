@@ -1,3 +1,3 @@
 .vagrant/
 run_tests
-run_tests_in_isolation
+tests/run_tests_in_isolation

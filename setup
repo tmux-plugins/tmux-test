@@ -25,7 +25,7 @@ add_files_to_gitignore() {
 	if ! undo; then
 		gitignore "run_tests"
 		gitignore "tests/run_tests_in_isolation"
-		gitignore "tests/helpers.sh"
+		gitignore "tests/helpers/helpers.sh"
 	fi
 }
 
@@ -40,7 +40,7 @@ symlink_user_test_runner() {
 
 create_directory_for_tests() {
 	if ! undo; then
-		mkdir -p tests/
+		mkdir -p tests/helpers/
 	fi
 }
 
@@ -54,9 +54,9 @@ symlink_internal_test_runner() {
 }
 
 symlink_test_helpers() {
-	local file="tests/helpers.sh"
+	local file="tests/helpers/helpers.sh"
 	if ! undo; then
-		ln -sf "../lib/tmux-test/${file}" "$file"
+		ln -sf "../../lib/tmux-test/${file}" "$file"
 	else
 		restore "$file"
 	fi
