@@ -4,6 +4,7 @@
 - changes so that 'tmux-test' can be included with tmux plugins
 - do not gitignore submodules directory
 - add installation and usage instructions
+- copy `.travis.yml` to the project root when running `setup` script
 
 ### v0.0.1, 2015-02-21
 - git init

@@ -35,7 +35,8 @@ The project directory will now look like this (additions have comments):
 /tmux-plugin
 |-- plugin.tmux
 |-- run_tests                       # symlink, gitignored
-|-- .gitignore                      # added
+|-- .gitignore                      # 2 lines appended to gitignore
+|-- .travis.yml                     # added
 |-- lib/tmux-test/                  # git submodule
 |-- scripts
 |   `-- plugin_script.sh

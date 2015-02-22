@@ -21,6 +21,10 @@ symlink_internal_test_runner() {
 	ln -sf ../lib/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
 }
 
+copy_travis_yml() {
+	cp lib/tmux-test/.travis.yml .travis.yml
+}
+
 main() {
 	add_files_to_gitignore
 	symlink_user_test_runner
