@@ -2,6 +2,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+  config.vm.synced_folder "../", "/vagrant"
+
   config.vm.define :ubuntu do |ubuntu|
     ubuntu.vm.box = "hashicorp/precise64"
     ubuntu.vm.provision "shell", path: "vagrant_ubuntu_provisioning.sh"

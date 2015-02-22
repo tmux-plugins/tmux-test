@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# invoke this script from your projects root directory
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+main() {
+	mkdir -p tests/
+	ln -sf dependencies/tmux-test/run_tests run_tests
+	ln -sf ../dependencies/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
+}
+main
+
