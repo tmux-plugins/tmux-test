@@ -6,15 +6,9 @@
 # files. To address that, "setup" is run before the tests and it's actions are
 # undone after.
 
-ENV="$1"
-
 main() {
 	lib/tmux-test/setup
-	if [ "$ENV" == "travis" ]; then
-		./tests/run_tests_in_isolation
-	else
-		./run_tests
-	fi
+	./run_tests
 	local exit_value=$?
 	lib/tmux-test/setup "undo"
 	exit "$exit_value"

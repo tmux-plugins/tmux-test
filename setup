@@ -75,7 +75,7 @@ symlink_test_helpers() {
 copy_travis_yml() {
 	local file=".travis.yml"
 	if ! undo; then
-		cp "lib/tmux-test/travis_for_plugins.yml" "$file"
+		cp "lib/tmux-test/${file}" "$file"
 	else
 		restore "$file"
 	fi
