@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v0.1.0, 2015-02-22
 - changes so that 'tmux-test' can be included with tmux plugins
 - do not gitignore submodules directory
 - add installation and usage instructions
