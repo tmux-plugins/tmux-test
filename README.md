@@ -67,6 +67,12 @@ Now that you installed `tmux-test` let's create an example test.
 
 Check out more example test scripts in this project's [tests/ directory](tests/).
 
+### Continuous integration
+
+The setup script (`lib/tmux-test/setup`) added a `.travis.yml` file to the
+project root. To setup continuous integration, just add/enable the project on
+[travis](travis-ci.org).
+
 ### Notes
 
 - The `tests/` directory for tests and `lib/tmux-test/` for cloning `tmux-test`
