@@ -4,9 +4,8 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-UNDO_SETUP="$1"
-
 # pass "undo" as a script arg to undo most of the setup actions
+UNDO_SETUP="$1"
 undo() {
 	[ "$UNDO_SETUP" == "undo" ]
 }
