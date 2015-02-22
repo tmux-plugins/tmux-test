@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- move `setup` task to `.travis.yml` for travis tests
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
