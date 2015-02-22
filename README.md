@@ -83,6 +83,14 @@ project root. To setup continuous integration, just add/enable the project on
   isolated environment like `vagrant` or `travis`.<br/>
   Use `./run_tests` script.
 
+### Running `tmux-test` framework tests
+
+`tmux-test` uses itself to test itself. To run framework tests:
+
+- clone this project `$ git clone git@github.com:tmux-plugins/tmux-test.git`
+- `$ cd tmux-test`
+- run `$ ./run_framework_tests`
+
 ### Other goodies
 
 - [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) - a plugin for
