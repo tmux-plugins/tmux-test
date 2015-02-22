@@ -4,12 +4,28 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-main() {
-	grep -q "^run_tests$" .gitignore || echo "run_tests" >> .gitignore
-	ln -sf lib/tmux-test/run_tests run_tests
+add_files_to_gitignore() {
+	grep -q "^run_tests$" .gitignore 2>/dev/null || echo "run_tests" >> .gitignore
+	grep -q "^lib/$" .gitignore      2>/dev/null || echo "lib/"      >> .gitignore
+}
 
+symlink_user_test_runner() {
+	ln -sf lib/tmux-test/run_tests run_tests
+}
+
+create_directory_for_tests() {
 	mkdir -p tests/
+}
+
+symlink_internal_test_runner() {
 	ln -sf ../lib/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
+}
+
+main() {
+	add_files_to_gitignore
+	symlink_user_test_runner
+	create_directory_for_tests
+	symlink_internal_test_runner
 }
 main
 
