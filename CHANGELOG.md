@@ -12,6 +12,7 @@
 - add a tmux scripting test
 - `tmux-test` uses `tmux-test` to test itself
 - update `tmux-test` submodule
+- a different `travis.yml` for `tmux-test` and for plugins
 
 ### v0.0.1, 2015-02-21
 - git init

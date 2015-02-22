@@ -10,4 +10,4 @@ install:
   - sudo apt-get update
   - sudo apt-get install -y tmux=1.9a-1~ppa1~p
 
-script: ./run_framework_tests "travis"
+script: ./tests/run_tests_in_isolation
