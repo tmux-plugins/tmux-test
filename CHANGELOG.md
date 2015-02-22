@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- `setup` script gitignores `tests/helpers.sh`
 
 ### v0.1.0, 2015-02-22
 - changes so that 'tmux-test' can be included with tmux plugins

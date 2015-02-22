@@ -16,10 +16,16 @@ restore() {
 	git checkout -- "$file" 2>/dev/null
 }
 
+gitignore() {
+	local file="$1"
+	grep -q "^${file}$" .gitignore 2>/dev/null || echo "$file" >> .gitignore
+}
+
 add_files_to_gitignore() {
 	if ! undo; then
-		grep -q "^run_tests$" .gitignore 2>/dev/null || echo "run_tests" >> .gitignore
-		grep -q "run_tests_in_isolation" .gitignore 2>/dev/null || echo "run_tests_in_isolation"      >> .gitignore
+		gitignore "run_tests"
+		gitignore "tests/run_tests_in_isolation"
+		gitignore "tests/helpers.sh"
 	fi
 }
 
