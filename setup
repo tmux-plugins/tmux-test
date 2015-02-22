@@ -24,7 +24,7 @@ gitignore() {
 remove_from_gitignore() {
 	local file="$1"
 	local escaped_filename="$(echo "$file" | sed "s,/,\\\/,g")"
-	sed -i "" "/^${escaped_filename}$/d" .gitignore
+	sed -i"" "/^${escaped_filename}$/d" .gitignore
 }
 
 add_files_to_gitignore() {
