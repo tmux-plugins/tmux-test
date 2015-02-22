@@ -22,7 +22,7 @@ register_failing_tests() {
 
 run_vagrant() {
 	local box="$1"
-	VAGRANT_CWD=dependencies/tmux-test/ vagrant up "$box"
+	VAGRANT_CWD=lib/tmux-test/ vagrant up "$box"
 }
 
 # Halt vagrant after tests are done running, unless KEEP_RUNNING environment
@@ -30,7 +30,7 @@ run_vagrant() {
 stop_vagrant() {
 	local box="$1"
 	if [ -z "$KEEP_RUNNING" ]; then
-		VAGRANT_CWD=dependencies/tmux-test/ vagrant halt "$box"
+		VAGRANT_CWD=lib/tmux-test/ vagrant halt "$box"
 	else
 		echo
 		echo "KEEP_RUNNING is set. Vagrant not halted."
@@ -42,7 +42,7 @@ run_tests() {
 	local test_file="/vagrant/tests/run_tests_in_isolation"
 	echo "Running test suite on $box from: $test_file"
 	echo
-	VAGRANT_CWD=dependencies/tmux-test/ vagrant ssh "$box" -c "cd /vagrant; $test_file"
+	VAGRANT_CWD=lib/tmux-test/ vagrant ssh "$box" -c "cd /vagrant; $test_file"
 }
 
 exit_message() {

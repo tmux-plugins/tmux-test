@@ -5,9 +5,11 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 main() {
+	grep -q "^run_tests$" .gitignore || echo "run_tests" >> .gitignore
+	ln -sf lib/tmux-test/run_tests run_tests
+
 	mkdir -p tests/
-	ln -sf dependencies/tmux-test/run_tests run_tests
-	ln -sf ../dependencies/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
+	ln -sf ../lib/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
 }
 main
 
