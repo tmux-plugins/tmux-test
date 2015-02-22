@@ -4,29 +4,63 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+UNDO_SETUP="$1"
+
+# pass "undo" as a script arg to undo most of the setup actions
+undo() {
+	[ "$UNDO_SETUP" == "undo" ]
+}
+
+restore() {
+	local file="$1"
+	rm -f "$file"
+	git checkout -- "$file" 2>/dev/null
+}
+
 add_files_to_gitignore() {
-	grep -q "^run_tests$" .gitignore 2>/dev/null || echo "run_tests" >> .gitignore
-	grep -q "run_tests_in_isolation" .gitignore 2>/dev/null || echo "run_tests_in_isolation"      >> .gitignore
+	if ! undo; then
+		grep -q "^run_tests$" .gitignore 2>/dev/null || echo "run_tests" >> .gitignore
+		grep -q "run_tests_in_isolation" .gitignore 2>/dev/null || echo "run_tests_in_isolation"      >> .gitignore
+	fi
 }
 
 symlink_user_test_runner() {
-	ln -sf lib/tmux-test/run_tests run_tests
+	local file="run_tests"
+	if ! undo; then
+		ln -sf "lib/tmux-test/${file}" "$file"
+	else
+		restore "$file"
+	fi
 }
 
 create_directory_for_tests() {
-	mkdir -p tests/
+	if ! undo; then
+		mkdir -p tests/
+	fi
 }
 
 symlink_internal_test_runner() {
-	ln -sf ../lib/tmux-test/tests/run_tests_in_isolation tests/run_tests_in_isolation
+	local file="tests/run_tests_in_isolation"
+	if ! undo; then
+		ln -sf "../lib/tmux-test/${file}" "$file"
+	else
+		restore "$file"
+	fi
 }
 
 symlink_test_helpers() {
-	ln -sf ../lib/tmux-test/tests/helpers tests/helpers
+	local file="tests/helpers"
+	if ! undo; then
+		ln -sf "../lib/tmux-test/${file}" "$file"
+	else
+		restore "$file"
+	fi
 }
 
 copy_travis_yml() {
-	cp lib/tmux-test/.travis.yml .travis.yml
+	if ! undo; then
+		cp lib/tmux-test/.travis.yml .travis.yml
+	fi
 }
 
 main() {
