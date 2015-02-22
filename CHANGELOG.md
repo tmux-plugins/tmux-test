@@ -2,6 +2,7 @@
 
 ### master
 - changes so that 'tmux-test' can be included with tmux plugins
+- do not gitignore submodules directory
 
 ### v0.0.1, 2015-02-21
 - git init

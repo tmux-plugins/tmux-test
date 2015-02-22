@@ -5,8 +5,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 add_files_to_gitignore() {
-	grep -q "^run_tests$" .gitignore            2>/dev/null || echo "run_tests" >> .gitignore
-	grep -q "^lib/$" .gitignore                 2>/dev/null || echo "lib/"      >> .gitignore
+	grep -q "^run_tests$" .gitignore 2>/dev/null || echo "run_tests" >> .gitignore
 	grep -q "run_tests_in_isolation" .gitignore 2>/dev/null || echo "run_tests_in_isolation"      >> .gitignore
 }
 
