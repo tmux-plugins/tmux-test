@@ -4,6 +4,7 @@
 - move `setup` task to `.travis.yml` for travis tests
 - "merge" travis.yml and travis_for_plugins.yml files (no need to keep em
   separate)
+- add more useful helper functions
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
