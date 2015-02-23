@@ -1,3 +1,7 @@
+# This file is a symlink from 'tmux-test' plugin.
+# You probably don't want to edit it.
+
+
 # Global variable that keeps the value of test status (success/fail).
 # Suggested usage is via `fail_helper` and `exit_helper` functions.
 TEST_STATUS="success"

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# This file is a symlink from 'tmux-test' plugin.
+# You probably don't want to edit it.
+
 # Invoke this script when running a test suite.
-# Examples invocation:
+# Example invocations:
 #   ./run_tests                # runs tests on default VM ubuntu
 #   ./run_tests ubuntu         # runs tests on ubuntu VM
 #   ./run_tests ubuntu centos  # runs tests on ubuntu and cents VMs

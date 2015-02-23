@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# This file is a symlink from 'tmux-test' plugin.
+# You probably don't want to edit it.
+
 # This script should be run within an isolated enviroment (Vagrant, travis).
 # Depending on what the tests do, it might NOT be safe to run this script
 # directly on the development machine.
