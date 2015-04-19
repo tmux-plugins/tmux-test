@@ -7,6 +7,7 @@
 # undone after.
 
 main() {
+	git clone https://github.com/tmux-plugins/tmux-test lib/tmux-test
 	lib/tmux-test/setup
 	./run_tests
 	local exit_value=$?

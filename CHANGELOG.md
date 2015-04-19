@@ -5,6 +5,9 @@
 - "merge" travis.yml and travis_for_plugins.yml files (no need to keep em
   separate)
 - add more useful helper functions
+- remove tmux-test repo as a submodule from self, this causes issues with
+  `$ git submodule update --recursive --init` command that some users use for
+  managing other plugins
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
