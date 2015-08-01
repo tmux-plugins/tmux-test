@@ -9,6 +9,7 @@
   `$ git submodule update --recursive --init` command that some users use for
   managing other plugins
 - add new helper `teardown_helper`
+- add `run_tests` helper
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
