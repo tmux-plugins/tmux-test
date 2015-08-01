@@ -8,12 +8,6 @@ TEST_STATUS="success"
 
 # PRIVATE FUNCTIONS
 
-_teardown() {
-	rm -f ~/.tmux.conf
-	rm -rf ~/.tmux/
-	tmux kill-server >/dev/null 2>&1
-}
-
 _clone_the_plugin() {
 	local plugin_path="${HOME}/.tmux/plugins/tmux-plugin-under-test/"
 	rm -rf "$plugin_path"
@@ -27,6 +21,12 @@ _add_plugin_to_tmux_conf() {
 }
 
 # PUBLIC HELPER FUNCTIONS
+
+teardown_helper() {
+	rm -f ~/.tmux.conf
+	rm -rf ~/.tmux/
+	tmux kill-server >/dev/null 2>&1
+}
 
 set_tmux_conf_helper() {
 	> ~/.tmux.conf	# empty tmux.conf file
@@ -42,7 +42,7 @@ fail_helper() {
 }
 
 exit_helper() {
-	_teardown
+	teardown_helper
 	if [ "$TEST_STATUS" == "fail" ]; then
 		echo "FAIL!"
 		echo

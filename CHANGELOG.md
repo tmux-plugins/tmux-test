@@ -8,6 +8,7 @@
 - remove tmux-test repo as a submodule from self, this causes issues with
   `$ git submodule update --recursive --init` command that some users use for
   managing other plugins
+- add new helper `teardown_helper`
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
