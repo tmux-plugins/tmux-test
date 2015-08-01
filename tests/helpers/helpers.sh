@@ -30,7 +30,7 @@ teardown_helper() {
 
 set_tmux_conf_helper() {
 	> ~/.tmux.conf	# empty tmux.conf file
-	while read -r line; do
+	while read line; do
 		echo "$line" >> ~/.tmux.conf
 	done
 }
