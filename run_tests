@@ -3,21 +3,74 @@
 # This file is a symlink from 'tmux-test' plugin.
 # You probably don't want to edit it.
 
-# Invoke this script when running a test suite.
-# Example invocations:
-#   ./run_tests                # runs tests on default VM ubuntu
-#   ./run_tests ubuntu         # runs tests on ubuntu VM
-#   ./run_tests ubuntu centos  # runs tests on ubuntu and cents VMs
+# Run this script when running a test suite.
 
 # For each virtual machine where tests run, this script performs the following:
 # - starts VM
 # - starts the test suite witin a VM
 # - stops the VM after the test suite is done
 
-export BOXES="$*"
+export BOXES=""
+export FILES=""
 
 # global variable for script exit value
 export EXIT_VALUE=0
+
+display_help() {
+	echo "Usage:"
+    echo "  ./run_tests                      # runs tests on default VM ubuntu"
+	echo "  ./run_tests -m ubuntu            # runs tests on ubuntu VM"
+	echo "  ./run_tests -m ubuntu -m centos  # runs tests on ubuntu and cents VMs"
+	echo "  ./run_tests tests/some_test      # run a single test file"
+}
+
+parse_arguments() {
+	while :
+	do
+		case "$1" in
+		-m | --machine)
+			local machine="$2"
+			if [ "$machine" == "ubuntu" ] || [ "$machine" == "centos" ]; then
+				BOXES="$BOXES $machine"
+			else
+				echo "Unknown machine '$machine'"
+				echo ""
+				display_help
+				exit 1
+			fi
+			shift 2
+			;;
+
+		-h | --help)
+			display_help
+			exit 0
+			;;
+
+		--) # End of all options
+			shift
+			FILES="$*"
+			break
+			;;
+
+		-* )
+			echo "Error: Unknown option: $1" >&2
+			echo ""
+			display_help
+			exit 1
+			;;
+
+		*)  # No more options
+			FILES="$*"
+			break
+			;;
+		esac
+	done
+
+	# default options
+	if [ -z "$BOXES" ]; then
+		BOXES="ubuntu"
+	fi
+}
 
 register_failing_tests() {
 	EXIT_VALUE=1
@@ -45,7 +98,7 @@ run_tests() {
 	local test_file="/vagrant/tests/run_tests_in_isolation"
 	echo "Running test suite on $box from: $test_file"
 	echo
-	VAGRANT_CWD=lib/tmux-test/ vagrant ssh "$box" -c "cd /vagrant; $test_file"
+	VAGRANT_CWD=lib/tmux-test/ vagrant ssh "$box" -c "cd /vagrant; $test_file $FILES"
 }
 
 exit_message() {
@@ -70,22 +123,16 @@ run_tests_on_vm() {
 }
 
 run_tests_on_virtual_machines() {
-	if [ -z "$BOXES" ]; then
-		# no script arguments, run on 'ubuntu' by default
-		run_tests_on_vm "ubuntu"
-	else
-		# run on VMs provided as script arguments
-		local box
-		for box in $BOXES; do
-			run_tests_on_vm "$box"
-		done
-	fi
+	local box
+	for box in $BOXES; do
+		run_tests_on_vm "$box"
+	done
 }
 
 main() {
-	echo "$BOXES"
+	parse_arguments "$@"
 	run_tests_on_virtual_machines
 	exit_message "$EXIT_VALUE"
 	exit "$EXIT_VALUE"
 }
-main
+main "$@"

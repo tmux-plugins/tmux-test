@@ -11,7 +11,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 EXIT_VALUE=0 # running a test suite is successful by default
 
-test_files() {
+all_test_files() {
 	ls -1 "$CURRENT_DIR" |   # test files are in the current dir
 		\grep -i "^test" |   # test file names start with "test"
 		xargs                # file names in a single line
@@ -22,8 +22,13 @@ set_exit_val_to_false() {
 }
 
 run_tests() {
-	local test_file
-	for test_file in $(test_files); do
+	local test_file tests_files
+	if [ "$#" -gt 0 ]; then
+		test_files="${@//tests\//}" # remove 'tests/' directory prefix
+	else
+		test_files="$(all_test_files)"
+	fi
+	for test_file in $test_files; do
 		echo "Running test: $test_file"
 		"${CURRENT_DIR}/${test_file}"
 
@@ -36,7 +41,7 @@ run_tests() {
 }
 
 main() {
-	run_tests
+	run_tests "$@"
 	exit "$EXIT_VALUE"
 }
-main
+main "$@"
