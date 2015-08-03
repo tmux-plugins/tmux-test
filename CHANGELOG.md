@@ -12,6 +12,8 @@
 - add `run_tests` helper
 - change CLI syntax for choosing vagrant machine to run the tests on
 - enable running just a single test via `run_tests` cli interface
+- add `--keep-running` cli option to continue running vagrant after the tests
+  are done executing
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
