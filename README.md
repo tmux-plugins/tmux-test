@@ -108,7 +108,7 @@ project root. To setup continuous integration, just add/enable the project on
   Use `./run_tests` script.
 - You can use `KEEP_RUNNING=true ./run_tests` for faster test running cycle.
   If this case `Vagrant` will keep running even after the tests are done.
-- You can use `VAGRANT_CWD=lib/tmux-text/ vagrant ssh ubuntu` for ssh login to
+- You can use `VAGRANT_CWD=lib/tmux-test/ vagrant ssh ubuntu` for ssh login to
   `Vagrant`.
 
 ### Running `tmux-test` framework tests
