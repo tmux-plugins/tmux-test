@@ -8,7 +8,7 @@ running the tests in `Vagrant`. Works on [travis](travis-ci.org) too.
 Extracted from [tmux plugin manager](https://github.com/tmux-plugins/tpm) and
 [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat).
 
-Dependencies: `Vagrant` (no required when running on travis).
+Dependencies: `Vagrant` (not required when running on travis).
 
 ### Setup
 
