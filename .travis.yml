@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get install -y libevent-dev libncurses-dev
   - git clone https://github.com/tmux/tmux.git
   - cd tmux
-  - git checkout 2.0
+  - git checkout 2.5
   - sh autogen.sh
   - ./configure && make && sudo make install
 
