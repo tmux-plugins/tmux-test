@@ -20,7 +20,7 @@ make install
 # compile tmux
 git clone https://github.com/tmux/tmux.git ~/tmux_source
 cd ~/tmux_source
-git checkout 2.0
+git checkout 2.5
 sh autogen.sh
 LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local
 make && sudo make install

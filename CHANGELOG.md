@@ -15,6 +15,7 @@
 - add `--keep-running` cli option to continue running vagrant after the tests
   are done executing
 - start using tmux 2.0 for tests
+- use tmux 2.5 for tests
 
 ### v0.2.0, 2015-02-22
 - `setup` script gitignores `tests/helpers.sh`
